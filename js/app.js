@@ -1,4 +1,8 @@
 
+var audioIniciar = new Audio("C:/Users/Aluno/Downloads/jogo-de-arquitetura/Audios/Abertura.mp3");
+var audioRapa = new Audio ("C:/Users/Aluno/Downloads/jogo-de-arquitetura/Audios/rapa.mp3");
+var audioSensacional = new Audio("C:/Users/Aluno/Downloads/jogo-de-arquitetura/Audios/sensacional.mp3")
+var audioErrou = new Audio("C:/Users/Aluno/Downloads/jogo-de-arquitetura/Audios/errou.mp3");
 
 const questionNumber = document.querySelector(".question-number");
 const questionText = document.querySelector(".question-text");
@@ -71,8 +75,11 @@ function getNewQuestion() {
 
 function getResult(element) {
     const id = parseInt(element.id);
+    
 
     if (id === currentQuestion.answer) {
+        
+        audioRapa.play();
 
         element.classList.add("correct");
 
@@ -80,6 +87,8 @@ function getResult(element) {
         correctAnswers++;
     }
     else {
+
+        audioErrou.play();
 
         element.classList.add("wrong");
 
@@ -123,6 +132,7 @@ function updateAnswerIndicator(markType){
 }
 
 function next() {
+    
     if (questionCounter === quiz.length) {
         quizOver();
     }
@@ -132,7 +142,7 @@ function next() {
 }
 
 function quizOver(){
-
+    audioSensacional.play();
     quizBox.classList.add("hide");
 
     resultBox.classList.remove("hide");
@@ -177,7 +187,7 @@ function goToHome(){
 // ** COMEÇO ** //
 
 function startQuiz(){
-
+    audioIniciar.play();
 
     homeBox.classList.add("hide");
 
